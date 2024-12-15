@@ -2,10 +2,18 @@ while True:
     print("=== Program Perhitungan Biaya Ekspedisi ===")
 
     # Meminta input dimensi paket
+    berat = float(input("Masukkan berat paket (kg): "))
+      # Memastikan berat minimal adalah 1 kg
+    if berat < 1:
+        print("Maaf hanya melayani di atas 1 kg.")
+        ulang = input("Apakah ingin memesan lagi? (y/n): ").lower()
+        if ulang != 'y':
+            print("Terima kasih telah menggunakan program ini!")
+            break  # Keluar dari loop jika pengguna tidak ingin mencoba lagi
+        continue  # Kembali ke awal loop jika pengguna ingin mencoba lagi
     panjang = float(input("Masukkan panjang paket (cm): "))
     lebar = float(input("Masukkan lebar paket (cm): "))
     tinggi = float(input("Masukkan tinggi paket (cm): "))
-    berat = float(input("Masukkan berat paket (kg): "))
      # Meminta input lokasi pengiriman
     lokasi = input("Masukkan lokasi pengiriman (Kota/Kabupaten Pasuruan): ")
     lokasi_valid = ["Kota Pasuruan", "Kabupaten Pasuruan"]  # lokasi yang valid
@@ -19,12 +27,7 @@ while True:
             print("Terima kasih telah menggunakan program ini!")
             break  # Keluar dari loop jika pengguna tidak ingin mencoba lagi
         continue  # Kembali ke awal loop jika pengguna ingin mencoba lagi
-
-    # Memastikan berat minimal adalah 1 kg
-    if berat < 1:
-        berat = 1
-        print("Berat paket diatur menjadi minimal 1 kg.")
-
+        
     # Menghitung volume paket
     volume = panjang * lebar * tinggi
     biaya_tambahan = 0 
